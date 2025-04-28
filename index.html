@@ -32,25 +32,29 @@
                 <option value="V4">Visit 4</option>
                 <option value="V5">Visit 5</option>
                 <option value="V6">Visit 6</option>
+                <option value="V8">Visit 8</option>
+                <option value="V10">Visit 10</option>
+                <option value="V12">Visit 12</option>
+                <option value="V14">Visit 14</option>
+                <option value="V16">Visit 16</option>
+                <option value="V18">Visit 18</option>
+                <option value="V20">Visit 20</option>
+                <option value="V22">Visit 22</option>
+                <option value="V24">Visit 24</option>
+                <option value="V26">Visit 26</option>
+                <option value="EOT">EOT</option>
             </select>
         </div>
 
         <div class="samples-section">
-            <h3>Select Samples:</h3>
-            <div class="sample-item">
-                <input type="checkbox" id="coag">
-                <label>Coagulation parameters</label>
-            </div>
-            <div class="sample-item">
-                <input type="checkbox" id="mim8">
-                <label>Mim8 PK/PD</label>
-            </div>
-            <!-- Add more sample types as needed -->
+            <h3>Required Samples for Selected Visit:</h3>
+            <div id="visitSamples"></div>
         </div>
 
         <div class="results">
             <div>Total Volume Required: <span id="totalVolume">0</span> ml</div>
-            <div>Maximum Allowed: <span id="maxAllowed">0</span> ml</div>
+            <div>Maximum Allowed (single visit): <span id="maxAllowed">0</span> ml</div>
+            <div>Maximum Allowed (28 days): <span id="maxAllowed28">0</span> ml</div>
             <div id="warningMessage"></div>
         </div>
     </div>
