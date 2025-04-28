@@ -1,0 +1,41 @@
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+    width: 200px;
+    padding: 5px;
+}
+
+.samples-section {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.sample-item {
+    margin: 5px 0;
+}
+
+.results {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+#warningMessage.warning {
+    color: red;
+}
