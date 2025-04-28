@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Volume Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Blood Volume Calculator</h1>
+        
+        <div class="input-group">
+            <label>Patient Weight (kg):</label>
+            <input type="number" id="weight" min="3" max="30" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label>Age Group:</label>
+            <select id="ageGroup">
+                <option value="1">≤1Y</option>
+                <option value="2">>1Y≤2Y</option>
+                <option value="3">>2Y≤6Y</option>
+                <option value="4">>6Y≤12Y</option>
+                <option value="5">>12Y</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Visit:</label>
+            <select id="visit">
+                <option value="V2">Visit 2</option>
+                <option value="V3">Visit 3</option>
+                <option value="V4">Visit 4</option>
+                <option value="V5">Visit 5</option>
+                <option value="V6">Visit 6</option>
+            </select>
+        </div>
+
+        <div class="samples-section">
+            <h3>Select Samples:</h3>
+            <div class="sample-item">
+                <input type="checkbox" id="coag">
+                <label>Coagulation parameters</label>
+            </div>
+            <div class="sample-item">
+                <input type="checkbox" id="mim8">
+                <label>Mim8 PK/PD</label>
+            </div>
+            <!-- Add more sample types as needed -->
+        </div>
+
+        <div class="results">
+            <div>Total Volume Required: <span id="totalVolume">0</span> ml</div>
+            <div>Maximum Allowed: <span id="maxAllowed">0</span> ml</div>
+            <div id="warningMessage"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
