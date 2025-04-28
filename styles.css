@@ -1,5 +1,5 @@
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -12,30 +12,52 @@
 .input-group label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .input-group input,
 .input-group select {
     width: 200px;
-    padding: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .samples-section {
     margin: 20px 0;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .sample-item {
-    margin: 5px 0;
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+}
+
+.sample-item label {
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .results {
     margin-top: 20px;
-    padding: 10px;
+    padding: 15px;
     background-color: #f0f0f0;
+    border-radius: 4px;
 }
 
-#warningMessage.warning {
-    color: red;
+.results div {
+    margin: 10px 0;
+}
+
+.warning {
+    color: #ff0000;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #ffe6e6;
+    border-radius: 4px;
+    margin-top: 10px;
 }
