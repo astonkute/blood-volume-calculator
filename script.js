@@ -87,25 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return (weight * 80) / 33;
     }
 
-    function updateVisitSamples() {
-        const visit = document.getElementById('visit').value;
-        const samplesDiv = document.getElementById('visitSamples');
-        samplesDiv.innerHTML = '';
-
-        const requiredSamples = visitRequirements[visit];
-        requiredSamples.forEach(sample => {
-            const div = document.createElement('div');
-            div.className = 'sample-item';
-            div.innerHTML = `
-                <input type="checkbox" id="${sample}" checked disabled>
-                <label for="${sample}">${getSampleLabel(sample)}</label>
-            `;
-            samplesDiv.appendChild(div);
-        });
-        
-        updateCalculations();
-    }
-
     function getSampleLabel(sampleId) {
         const labels = {
             coag: 'Coagulation parameters (aPTT, fibrinogen, d-dimer, prothrombin fragments 1+2)',
@@ -120,12 +101,36 @@ document.addEventListener('DOMContentLoaded', function() {
         return labels[sampleId];
     }
 
+    function updateVisitSamples() {
+        const visit = document.getElementById('visit').value;
+        const samplesDiv = document.getElementById('visitSamples');
+        samplesDiv.innerHTML = '';
+
+        const requiredSamples = visitRequirements[visit];
+        requiredSamples.forEach(sample => {
+            const div = document.createElement('div');
+            div.className = 'sample-item';
+            div.innerHTML = `
+                <input type="checkbox" id="${sample}" class="sample-checkbox">
+                <label for="${sample}">${getSampleLabel(sample)}</label>
+            `;
+            samplesDiv.appendChild(div);
+            
+            document.getElementById(sample).addEventListener('change', updateCalculations);
+        });
+        
+        updateCalculations();
+    }
+
     function calculateTotalVolume(ageGroup, visit) {
         let total = 0;
         const requiredSamples = visitRequirements[visit];
         
         requiredSamples.forEach(sample => {
-            total += sampleVolumes[sample][ageGroup];
+            const checkbox = document.getElementById(sample);
+            if (checkbox && checkbox.checked) {
+                total += sampleVolumes[sample][ageGroup];
+            }
         });
         return total;
     }
@@ -143,18 +148,53 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('maxAllowed').textContent = maxAllowed.toFixed(1);
         document.getElementById('maxAllowed28').textContent = maxAllowed28.toFixed(1);
 
+        // Update sample breakdown
+        const breakdownDiv = document.getElementById('sampleBreakdown');
+        breakdownDiv.innerHTML = '<h4>Sample Volume Breakdown:</h4>';
+        
+        const requiredSamples = visitRequirements[visit];
+        requiredSamples.forEach(sample => {
+            const checkbox = document.getElementById(sample);
+            if (checkbox && checkbox.checked) {
+                const volume = sampleVolumes[sample][ageGroup];
+                breakdownDiv.innerHTML += `
+                    <div class="breakdown-item">
+                        ${getSampleLabel(sample)}: ${volume.toFixed(1)} ml
+                    </div>
+                `;
+            }
+        });
+
+        // Update warning message
         const warningMessage = document.getElementById('warningMessage');
         if (totalVolume > maxAllowed) {
-            warningMessage.innerHTML = 'WARNING: Volume exceeds maximum allowed for single visit!<br>';
+            warningMessage.innerHTML = 'WARNING: Volume exceeds maximum allowed for single visit!';
             warningMessage.className = 'warning';
         } else if (totalVolume > maxAllowed28) {
-            warningMessage.innerHTML = 'WARNING: Volume exceeds maximum allowed for 28-day period!<br>';
+            warningMessage.innerHTML = 'WARNING: Volume exceeds maximum allowed for 28-day period!';
             warningMessage.className = 'warning';
-        } else {
+        } else if (totalVolume > 0) {
             warningMessage.innerHTML = 'Volume is within allowed limits';
             warningMessage.className = '';
+        } else {
+            warningMessage.innerHTML = '';
         }
     }
+
+    // Select All functionality
+    document.getElementById('selectAll').addEventListener('click', function() {
+        const visit = document.getElementById('visit').value;
+        const requiredSamples = visitRequirements[visit];
+        
+        requiredSamples.forEach(sample => {
+            const checkbox = document.getElementById(sample);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+        
+        updateCalculations();
+    });
 
     // Add event listeners
     document.getElementById('weight').addEventListener('input', updateCalculations);
