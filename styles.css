@@ -3,16 +3,26 @@
     margin: 20px auto;
     padding: 20px;
     font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .input-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #444;
 }
 
 .input-group input,
@@ -21,43 +31,79 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 14px;
 }
 
 .samples-section {
     margin: 20px 0;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
 .sample-item {
+    display: flex;
+    align-items: center;
     margin: 10px 0;
-    padding: 8px;
-    background-color: #f8f8f8;
+    padding: 10px;
+    background-color: #ffffff;
     border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .sample-item label {
     margin-left: 10px;
     cursor: pointer;
+    flex: 1;
+}
+
+.sample-checkbox {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
 }
 
 .results {
     margin-top: 20px;
-    padding: 15px;
+    padding: 20px;
     background-color: #f0f0f0;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .results div {
     margin: 10px 0;
+    font-size: 16px;
 }
 
 .warning {
-    color: #ff0000;
+    color: #d32f2f;
     font-weight: bold;
     padding: 10px;
-    background-color: #ffe6e6;
+    background-color: #ffebee;
     border-radius: 4px;
     margin-top: 10px;
+}
+
+.breakdown-item {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    font-size: 0.9em;
+    border-left: 4px solid #2196f3;
+}
+
+#selectAll {
+    margin-bottom: 15px;
+    padding: 8px 16px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#selectAll:hover {
+    background-color: #1976d2;
 }
