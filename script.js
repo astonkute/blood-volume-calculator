@@ -204,3 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial update
     updateVisitSamples();
 });
+git add .
+git commit -m "Updated calculator files"
+git push origin main
